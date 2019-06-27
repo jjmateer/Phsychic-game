@@ -1,65 +1,58 @@
-//Variables
+var alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
 var wins = 0;
 var losses = 0;
-var guessesLeft = 5;
+var guesses = 5;
+var computerGuess = alphabet[Math.floor(Math.random() * alphabet.length)];
 var guessesSoFar = [];
-var directionsText = document.getElementById("directions-text");
-var userGuessText = document.getElementById("userGuess-text");
-var guessesSoFarText = document.getElementById("guessesSoFar-text")
-var guessesLeftText = document.getElementById("guessesLeft-text");
-var winsText = document.getElementById("wins-text");
-var lossesText = document.getElementById("losses-text");
+var winPoints = document.getElementById("wins-text");
+var guessesLeft = document.getElementById("guessesLeft-text");
+var losePoints = document.getElementById("losses-text");
+var guessSoFar = document.getElementById("guessesSoFar-text");
 
-//Choices for computer
-var computerChoices = "abcdefghijklmnopqrstuvwxyz".split("");
-////The computer picks a random letter from A-Z
-var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-function updateText() {
-  winsText.textContent = "wins: " + wins;
-  lossesText.textContent = "losses: " + losses;
-  guessesLeftText.textContent = "guesses left: " + guessesLeft;
-  guessesSoFarText.textContent = "guesses so far: " + guessesSoFarText;
+function updateDisplays() {
+  winPoints.textContent = wins;
+  guessesLeft.textContent = guesses;
+  losePoints.textContent = losses;
 }
-//If the user and computer guess the same, "wins" +1, otherwise "guesses left" -1
-updateText();
 
-document.onkeyup = event => {
-  console.log()
+document.onkeyup = function(event) {
 
-  var userGuess = event.key.toLowerCase();
-  if (userGuess === computerGuess) {
+  var userGuess = event.key;
+  guessesSoFar.push(userGuess);
+  guessSoFar.textContent = guessesSoFar;
+
+  if (userGuess == computerGuess) {
+
     wins++;
-    updateText();
-    guessesLeft = 4;
+    guesses = 5
+    computerGuess = alphabet[Math.floor(Math.random() * alphabet.length)];
+    guessesSoFar = [];
+    alert("+1 win")
+  } else {
 
+    guesses--;
+    if(losses == 2){
+      alert("you lose!");
+      wins = 0;
+      losses = 0;
+    }
+    if (guesses == 0) {
+      losses++;
+      guessesSoFar = [];
+      guesses = 5;
+      alert("+1 loss")
+    }
+    if(wins == 2) {
+      alert("you win!")
+      wins = 0;
+      losses = 0;
+    }
 
   }
-  else {
-    guessesLeft--;
-    updateText();
-  }
 
-  if (guessesLeft === 0) {
-    losses++;
-    updateText();
-    guessesLeft = 5;
-  }
+  updateDisplays();
 
-  if (losses === 2) {
-    alert("you lose!")
-    wins = 0;
-    losses = 0;
-  }
-  if (wins === 1) {
-    alert("you win!")
-    wins = 0;
-    losses = 0;
-  }
-
-  console.log(event.key)
-  document.getElementById("guessesSoFar-text").innerHTML += event.key;
+}
 
 
-
-
-};
+updateDisplays();
