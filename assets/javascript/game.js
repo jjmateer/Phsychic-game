@@ -2,6 +2,7 @@
 var wins = 0;
 var losses = 0;
 var guessesLeft = 5;
+var guessesSoFar = [];
 var directionsText = document.getElementById("directions-text");
 var userGuessText = document.getElementById("userGuess-text");
 var guessesSoFarText = document.getElementById("guessesSoFar-text")
@@ -22,13 +23,6 @@ function updateText() {
 //If the user and computer guess the same, "wins" +1, otherwise "guesses left" -1
 updateText();
 
- document.onkeydown = function(event) {
-  console.log()
-  var key_press = String.fromCharCode(event.keyCode);
-   document.getElementById('guessesSoFar-text') .innerHTML = key_press;
-
- }
-
 document.onkeyup = event => {
   console.log()
 
@@ -37,7 +31,7 @@ document.onkeyup = event => {
     wins++;
     updateText();
     guessesLeft = 4;
-    
+
 
   }
   else {
@@ -62,7 +56,9 @@ document.onkeyup = event => {
     losses = 0;
   }
 
-  alert("User guess: " + userGuess);
+  console.log(event.key)
+  document.getElementById("guessesSoFar-text").innerHTML += event.key;
+
 
 
 
