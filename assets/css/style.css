@@ -1,0 +1,52 @@
+body{
+    background-color:darkslateblue;
+    color:white;
+}
+#header{
+    font-size:100px;
+    text-align:center;
+}
+p{
+    font-size:75px;
+    text-align:center;
+}
+#infoDisplay{
+    
+    font-size:75px;
+    text-align:center;
+    border: dotted white;
+    background-color: black;
+}
+#infoDiv1{
+    height:100px;
+    width:auto;
+    margin:auto;
+    max-width:50%;
+    border:solid black;
+
+}
+#losses-text{
+    color:red;
+}
+#wins-text{
+    color:green;
+}
+#infoDiv2{
+    height:100px;
+    width:auto;
+    margin:auto;
+    max-width:50%;
+    border:solid black;
+
+
+    
+}
+#infoDiv3{
+    height:250px;
+    width:auto;
+    margin:auto;
+    max-width:50%;
+    border:solid black;
+
+    
+}
