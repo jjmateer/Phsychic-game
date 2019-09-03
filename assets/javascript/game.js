@@ -30,7 +30,7 @@ document.onkeyup = function (event) {
   } else {
     guesses--;
 
-    if (losses == 2) {
+    if (losses > 2) {
       alert("you lose!");
       wins = 0;
       losses = 0;

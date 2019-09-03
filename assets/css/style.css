@@ -1,5 +1,5 @@
 body{
-    background-color:darkslateblue;
+    background-color:gray;
     color:white;
 }
 #header{
@@ -9,12 +9,12 @@ body{
 p{
     font-size:75px;
     text-align:center;
+    border-bottom:solid white;
 }
 #infoDisplay{
     
     font-size:75px;
     text-align:center;
-    border: dotted white;
     background-color: black;
 }
 #infoDiv1{
